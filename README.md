@@ -35,14 +35,8 @@ DISCENTE: RAFAEL RIKI OGAWA OSIRO
   </div>
 </div>
 
-
-
-
-
-
-### Node MVC WebApp
-
-Node MVC WebApp é um aplicativo modelo usando [Node.js](https://nodejs.org/en) e padrão arquitetural [MVC](https://pt.wikipedia.org/wiki/MVC)
+<br>
+<br>
 
 ## Instalação
 
