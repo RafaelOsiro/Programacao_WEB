@@ -1,4 +1,4 @@
-const Pessoa = require('../models/pessoa')
+const Pessoa = require('../models/pessoaModel')
 
 function cadastrarView(req, res) {
   res.render("pessoa/cadastrar.html", {});
