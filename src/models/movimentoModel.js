@@ -11,9 +11,7 @@ const Movimento = database.define('movimento', {
   },
   conta_corrente_id: {
     type: Sequelize.BIGINT,
-    allowNull: false,
-    autoIncrement: true,
-    unique: true
+    allowNull: false
   },
   tipo: {
     type: Sequelize.CHAR(1),
@@ -36,3 +34,5 @@ const Movimento = database.define('movimento', {
     allowNull: false
   }
 })
+
+module.exports = Movimento;
