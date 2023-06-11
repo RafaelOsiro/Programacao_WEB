@@ -19,6 +19,10 @@ const ContaCorrente = database.define('conta_corrente', {
     allowNull: false,
     unique: true
   },
+  nome: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
   data_abertura: {
     type: Sequelize.DATE,
     allowNull: false,
