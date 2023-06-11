@@ -32,6 +32,10 @@ const Movimento = database.define('movimento', {
   conta_corrente_destino: {
     type: Sequelize.BIGINT,
     allowNull: false
+  },
+  observacao: {
+    type: Sequelize.STRING(255),
+    allowNull: false
   }
 })
 
