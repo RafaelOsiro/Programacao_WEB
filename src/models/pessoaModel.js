@@ -26,11 +26,6 @@ const Pessoa = database.define('pessoa', {
     type: Sequelize.BIGINT,
     allowNull: false
   },
-  email: {
-    type: Sequelize.STRING(32),
-    allowNull: false,
-    unique: true
-  },
   endereco: {
     type: Sequelize.STRING(255),
     allowNull: false
