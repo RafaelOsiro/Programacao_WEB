@@ -14,6 +14,9 @@ app.set('views', __dirname + '/src/views');
 
 app.use(express.urlencoded({ extended: true }));
 
+// Adicionar a pasta public
+app.use(express.static('public'));
+
 // Define as rotas da aplicação (declaradas na pasta /src/routes/)
 app.use('/', require('./src/routes/pessoaRoutes'));
 app.use('/', require('./src/routes/indexRoutes'));
@@ -22,20 +25,20 @@ db.sync(() => console.log(`Banco de dados conectado`));
 
 const app_port = 8000
 app.listen(app_port, function () {
-    console.log('app rodando na porta ' + app_port);
+  console.log('app rodando na porta ' + app_port);
 })
 
 Pessoa.findByPk(1)
-    .then((pessoa) => {
-        if (pessoa) {
-            usuarioBuild.setPessoa(pessoa);
-            console.log("PESSOA =>", pessoa);
-            return usuarioBuild.save();
-        }
-    })
-    .then(() => {
-        console.log("Usuário salvo com sucesso!");
-    })
-    .catch((error) => {
-        console.error("Erro ao salvar o usuário:", error);
-    });
+  .then((pessoa) => {
+    if (pessoa) {
+      usuarioBuild.setPessoa(pessoa);
+      console.log("PESSOA =>", pessoa);
+      return usuarioBuild.save();
+    }
+  })
+  .then(() => {
+    console.log("Usuário salvo com sucesso!");
+  })
+  .catch((error) => {
+    console.error("Erro ao salvar o usuário:", error);
+  });
