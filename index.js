@@ -21,6 +21,8 @@ app.use(express.static('public'));
 app.use('/', require('./src/routes/indexRoutes'));
 app.use('/', require('./src/routes/pessoaRoutes'));
 app.use('/', require('./src/routes/loginRoutes'));
+app.use('/', require('./src/routes/depositarRoutes'));
+
 
 // Linkar o banco de dados
 db.sync(() => console.log(`Banco de dados conectado`));
