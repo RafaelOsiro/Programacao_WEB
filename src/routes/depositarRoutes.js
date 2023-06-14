@@ -3,6 +3,6 @@ const router = express.Router();
 
 const depositarController = require('../controllers/depositarController');
 
-router.get('/depositar', depositarController.navigateView);
+router.get('/depositar', depositarController.depositarView);
 
 module.exports = router;

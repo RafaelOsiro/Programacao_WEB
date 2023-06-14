@@ -1,9 +1,9 @@
-function navigateView(req, res) {
+function depositarView(req, res) {
   res.render("depositar/depositar.html", {});
 }
 
 
 
 module.exports = {
-  navigateView
+  depositarView
 };
