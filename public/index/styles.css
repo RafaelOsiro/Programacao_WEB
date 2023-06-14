@@ -1,0 +1,37 @@
+.navigationBar {
+  background: #E7F1FF;
+}
+
+.logoImage {
+  width: 40px;
+  height: auto;
+  max-height: 40px;
+}
+
+.phoneText {
+  display: flex;
+  color: #ffffff;
+}
+
+.rowMargin {
+  padding: 70px 0;
+  row-gap: 105px;
+}
+
+.operationsContainer {
+  width: 512px;
+  height: 160px;
+  background: #E7F1FF;
+  border: 1px solid #0D6EFD;
+  border-radius: 4.8px;
+}
+
+.containerContent {
+  width: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 28px;
+}
