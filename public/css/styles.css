@@ -35,3 +35,29 @@
   justify-content: center;
   row-gap: 28px;
 }
+
+.depositarContainer {
+  margin: 97.5px 0;
+}
+
+.depositarTitle {
+  text-align: center;
+  margin: 88px 0;
+}
+
+.depositarEspacamento {
+  display: flex;
+  row-gap: 50px;
+}
+
+.sucessAlert {
+  position: absolute !important;
+  width: 100%;
+  top: 60px;
+}
+
+.errorAlert {
+  position: absolute !important;
+  width: 100%;
+  top: 120px;
+}
