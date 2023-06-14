@@ -18,9 +18,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 // Define as rotas da aplicação (declaradas na pasta /src/routes/)
-app.use('/', require('./src/routes/pessoaRoutes'));
 app.use('/', require('./src/routes/indexRoutes'));
+app.use('/', require('./src/routes/pessoaRoutes'));
+app.use('/', require('./src/routes/loginRoutes'));
 
+// Linkar o banco de dados
 db.sync(() => console.log(`Banco de dados conectado`));
 
 const app_port = 8000
