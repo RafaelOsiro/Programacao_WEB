@@ -71,3 +71,7 @@
   flex-direction: column;
   align-items: center;
 }
+
+.cadastrarContaContainer {
+  margin: 148px 0;
+}
