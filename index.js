@@ -25,6 +25,7 @@ app.use('/', require('./src/routes/depositarRoutes'));
 app.use('/', require('./src/routes/escolherContaRoutes'));
 app.use('/', require('./src/routes/cadastrarContaRoutes'));
 app.use('/', require('./src/routes/homeRoutes'));
+app.use('/', require('./src/routes/extratoRoutes'));
 
 
 
