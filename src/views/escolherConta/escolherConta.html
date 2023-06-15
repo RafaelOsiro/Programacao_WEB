@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <title>Escolher Conta</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+
+  <div class="container-expand-fluid">
+    <nav class="navbar navbar-expand-lg navigationBar">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="../images/Logo.png" class="logoImage" />
+        </a>
+        <div class="collapse navbar-collapse justify-content-md-end" id="navbarSupportedContent">
+          <button type="button" class="btn btn-danger">Sair</button>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <div class="container-fluid d-flex align-items-center justify-content-center depositarContainer">
+    <div class="row ">
+
+      <h1 class="depositarTitle">Bem Vindo {{pessoa.nome}}</h1>
+
+      <form class="escolherConta" method="post" action="/submit">
+        <fieldset>
+
+          <div class="mb-3">
+            <label for="escolher-conta" class="form-label">Escolha uma Conta: </label>
+            <select id="escolher-conta" name="escolher-conta" class="form-select">
+              <option value="principal">Principal</option>
+            </select>
+          </div>
+
+          <div class="container-expand-fluid d-flex justify-content-end pt-2">
+            <input type="submit" class="btn btn-primary" value="Entrar" />
+          </div>
+
+        </fieldset>
+      </form>
+
+      <div class="container-fluid d-flex align-items-center justify-content-center">
+        <div class="col rowMarginEscolherConta">
+
+          <div class="operationsContainer">
+            <div class="containerContent">
+              <h2 class="text-primary">Quer criar uma conta?</h2>
+              <button type="button" class="btn btn-primary">Criar</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="navbar navbar-expand-fluid bg-primary navigationBar">
+    <div class="container ">
+      <span class="phoneText">
+        Central de Atendimento<br />
+        4002-8922 / 3321-8181
+      </span>
+    </div>
+  </footer>
+
+</body>
+
+</html>

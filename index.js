@@ -22,6 +22,7 @@ app.use('/', require('./src/routes/indexRoutes'));
 app.use('/', require('./src/routes/pessoaRoutes'));
 app.use('/', require('./src/routes/loginRoutes'));
 app.use('/', require('./src/routes/depositarRoutes'));
+app.use('/', require('./src/routes/escolherContaRoutes'));
 
 
 // Linkar o banco de dados
