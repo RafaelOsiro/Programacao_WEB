@@ -75,3 +75,8 @@
 .cadastrarContaContainer {
   margin: 148px 0;
 }
+
+.rowMarginHome {
+  display: flex;
+  row-gap: 60px;
+}
