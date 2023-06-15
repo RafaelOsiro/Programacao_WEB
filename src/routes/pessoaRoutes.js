@@ -3,7 +3,7 @@ const router = express.Router();
 
 const pessoaController = require('../controllers/pessoaController');
 
-router.get('/pessoa/cadastrar', pessoaController.cadastrarView);
+router.get('/cadastrar/pessoa', pessoaController.cadastrarPessoaView);
 router.post('/pessoa/cadastrar', pessoaController.cadastrarPessoa);
 
 router.get('/pessoa/listar', pessoaController.listarView);

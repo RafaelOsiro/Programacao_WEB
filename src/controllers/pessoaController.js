@@ -1,7 +1,7 @@
 const Pessoa = require('../models/pessoaModel')
 
-function cadastrarView(req, res) {
-  res.render("pessoa/cadastrar.html", {});
+function cadastrarPessoaView(req, res) {
+  res.render("cadastrarPessoa/cadastrarPessoa.html", {});
 }
 
 function cadastrarPessoa(req, res) {
@@ -61,7 +61,7 @@ function editarPessoa(req, res) {
 }
 
 module.exports = {
-  cadastrarView,
+  cadastrarPessoaView,
   cadastrarPessoa,
   listarView,
   editarView,
