@@ -62,6 +62,10 @@
   top: 120px;
 }
 
+.homeContainer {
+  margin: 24.5px 0;
+}
+
 .escolherConta {
   margin-bottom: 75px;
 }
@@ -87,4 +91,8 @@
 
 .extratoText {
   font-size: 30px;
+}
+
+.transferirContainer {
+  margin: 97.2px 0;
 }
