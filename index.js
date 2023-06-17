@@ -26,8 +26,7 @@ app.use('/', require('./src/routes/escolherContaRoutes'));
 app.use('/', require('./src/routes/cadastrarContaRoutes'));
 app.use('/', require('./src/routes/homeRoutes'));
 app.use('/', require('./src/routes/extratoRoutes'));
-
-
+app.use('/', require('./src/routes/saldoRoutes'));
 
 // Linkar o banco de dados
 db.sync(() => console.log(`Banco de dados conectado`));

@@ -80,3 +80,11 @@
   display: flex;
   row-gap: 60px;
 }
+
+.extratoContainer {
+  margin: 192px 0;
+}
+
+.extratoText {
+  font-size: 30px;
+}
