@@ -19,7 +19,7 @@
           <img src="../images/Logo.png" class="logoImage" />
         </a>
         <div>
-          <button type="button" class="btn text-primary">Voltar</button>
+          <a href="/escolher/conta" class="btn text-primary">Voltar</a>
         </div>
         <div class="collapse navbar-collapse justify-content-md-end" id="navbarSupportedContent">
           <button type="button" class="btn btn-danger">Sair</button>
@@ -33,15 +33,15 @@
 
       <h1 class="depositarTitle">Bem Vindo {{pessoa.nome}} - {{conta.nome}}</h1>
 
-      <div class="container-fluid d-flex align-items-center justify-content-center">
+      <div>
         <div class="row rowMarginHome">
 
           <div class="operationsContainer">
             <div class="containerContent">
               <h2 class="text-primary">Consultas</h2>
               <div class="col">
-                <button type="button" class="btn btn-primary">Saldo</button>
-                <button type="button" class="btn btn-primary">Extrato</button>
+                <a href="/saldo" class="btn btn-primary">Saldo</a>
+                <a href="/extrato" class="btn btn-primary">Extrato</a>
               </div>
             </div>
           </div>
@@ -49,7 +49,7 @@
           <div class="operationsContainer">
             <div class="containerContent">
               <h2 class="text-primary">Transferências</h2>
-              <button type="button" class="btn btn-primary">Entre conta corrente</button>
+              <a href="/transferencia/entre-contas" class="btn btn-primary">Entre conta corrente</a>
             </div>
           </div>
 
