@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const database = require('../db');
-const Movimento = require('./movimentoModel');
+const Usuario = require('./usuarioModel');
 
 const ContaCorrente = database.define('conta_corrente', {
   id: {
@@ -33,9 +33,9 @@ const ContaCorrente = database.define('conta_corrente', {
   }
 })
 
-ContaCorrente.hasMany(Movimento, {
-  foreignKey: 'conta_corrente_id',
-  sourceKey: 'id'
+ContaCorrente.belongsTo(Usuario, {
+  foreignKey: 'usuario_id',
+  allowNull: false
 });
 
 module.exports = ContaCorrente;

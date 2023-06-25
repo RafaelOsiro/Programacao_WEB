@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const database = require('../db');
+const ContaCorrente = require('./contaCorrenteModel');
 
 const Movimento = database.define('movimento', {
   id: {
@@ -37,6 +38,11 @@ const Movimento = database.define('movimento', {
     type: Sequelize.STRING(255),
     allowNull: false
   }
+})
+
+Movimento.belongsTo(ContaCorrente, {
+  foreignKey: 'conta_corrente_id',
+  allowNull: false
 })
 
 module.exports = Movimento;
