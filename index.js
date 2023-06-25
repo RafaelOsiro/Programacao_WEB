@@ -5,6 +5,7 @@ const Pessoa = require('./src/models/pessoaModel');
 const Usuario = require('./src/models/usuarioModel');
 const Movimento = require('./src/models/movimentoModel');
 const ContaCorrente = require('./src/models/contaCorrenteModel');
+const sessao = require('./src/services/autenticador');
 
 const app = express()
 
@@ -13,6 +14,7 @@ app.set('view engine', 'html');
 app.set('views', __dirname + '/src/views');
 
 app.use(express.urlencoded({ extended: true }));
+app.use(sessao.criarSessao());
 
 // Adicionar a pasta public
 app.use(express.static('public'));

@@ -22,7 +22,6 @@ async function cadastrarPessoaUsuario(req, res) {
   } = req.body;
 
   try {
-    // Verifica se o CPF já está cadastrado
     const pessoaExists = await Pessoa.findOne({
       where: { cpf }
     });
@@ -34,7 +33,6 @@ async function cadastrarPessoaUsuario(req, res) {
       });
     }
 
-    // Verifica se o e-mail já está cadastrado
     const usuarioExists = await Usuario.findOne({
       where: { email }
     });
@@ -46,7 +44,6 @@ async function cadastrarPessoaUsuario(req, res) {
       });
     }
 
-    // Verifica se a senha e a confirmação de senha são iguais
     if (senha !== confirmar_senha) {
       return res.render("cadastrarPessoa/cadastrarPessoa.html", {
         pessoa: null,
@@ -54,7 +51,6 @@ async function cadastrarPessoaUsuario(req, res) {
       });
     }
 
-    // Cria a pessoa no banco de dados
     const novaPessoa = await Pessoa.create({
       nome,
       cpf,
@@ -64,14 +60,12 @@ async function cadastrarPessoaUsuario(req, res) {
       cep
     });
 
-    // Cria o usuário no banco de dados associado à pessoa criada
     const novoUsuario = await Usuario.create({
       pessoa_id: novaPessoa.id,
       email,
-      password: senha
+      senha: senha
     });
 
-    // Renderiza a página de sucesso de cadastro
     res.render("cadastrarPessoa/cadastrarPessoa.html", {
       pessoa: { result: "Cadastro realizado com sucesso" },
       erro: null
