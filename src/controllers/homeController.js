@@ -1,5 +1,9 @@
+const Pessoa = require('../models/pessoaModel');
+
 function homeView(req, res) {
-  res.render("home/home.html", {});
+  let pessoa = req.session.pessoa.nome;
+
+  res.render("home/home.html", { pessoa });
 }
 
 

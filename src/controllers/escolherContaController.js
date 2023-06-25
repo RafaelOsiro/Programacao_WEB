@@ -1,5 +1,7 @@
 function escolherContaView(req, res) {
-  res.render("escolherConta/escolherConta.html", {});
+  let pessoa = req.session.pessoa.nome;
+
+  res.render("escolherConta/escolherConta.html", { pessoa });
 }
 
 
