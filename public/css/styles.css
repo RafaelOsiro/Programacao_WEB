@@ -36,6 +36,10 @@
   row-gap: 28px;
 }
 
+.loginContainer {
+  margin: 97px 0;
+}
+
 .depositarContainer {
   margin: 97.5px 0;
 }

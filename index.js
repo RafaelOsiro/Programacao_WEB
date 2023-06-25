@@ -23,6 +23,7 @@ app.use('/', require('./src/routes/pessoaRoutes'));
 app.use('/', require('./src/routes/loginRoutes'));
 app.use('/', require('./src/routes/depositarRoutes'));
 app.use('/', require('./src/routes/escolherContaRoutes'));
+app.use('/', require('./src/routes/cadastrarPessoaRoutes'));
 app.use('/', require('./src/routes/cadastrarContaRoutes'));
 app.use('/', require('./src/routes/homeRoutes'));
 app.use('/', require('./src/routes/extratoRoutes'));
