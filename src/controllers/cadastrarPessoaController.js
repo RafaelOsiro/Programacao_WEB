@@ -66,10 +66,9 @@ async function cadastrarPessoaUsuario(req, res) {
       senha: senha
     });
 
-    res.render("cadastrarPessoa/cadastrarPessoa.html", {
-      pessoa: { result: "Cadastro realizado com sucesso" },
-      erro: null
-    });
+    const mensagem = "Cadastro realizado com sucesso";
+
+    res.render("index/index.html", { mensagem });
   } catch (error) {
     console.error("Erro ao cadastrar pessoa e usuário:", error);
     res.render("cadastrarPessoa/cadastrarPessoa.html", {
