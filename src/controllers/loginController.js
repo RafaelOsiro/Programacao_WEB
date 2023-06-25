@@ -8,14 +8,8 @@ function loginView(req, res) {
 async function entrarNaConta(req, res) {
   const { email, senha } = req.body;
 
-  console.log("BODY : " + email + " " + senha);
-
   try {
     const usuario = await Usuario.findOne({ where: { email } });
-
-    console.log("USUARIO : " + usuario);
-    console.log("EMAIL : " + usuario.email + " " + email);
-    console.log("SENHA : " + usuario.senha + " " + senha);
 
     if (usuario && usuario.senha === senha) {
       req.session.autenticado = true;
