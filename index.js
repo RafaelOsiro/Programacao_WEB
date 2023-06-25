@@ -39,18 +39,3 @@ const app_port = 8000
 app.listen(app_port, function () {
   console.log('app rodando na porta ' + app_port);
 })
-
-Pessoa.findByPk(1)
-  .then((pessoa) => {
-    if (pessoa) {
-      usuarioBuild.setPessoa(pessoa);
-      console.log("PESSOA =>", pessoa);
-      return usuarioBuild.save();
-    }
-  })
-  .then(() => {
-    console.log("Usuário salvo com sucesso!");
-  })
-  .catch((error) => {
-    console.error("Erro ao salvar o usuário:", error);
-  });
