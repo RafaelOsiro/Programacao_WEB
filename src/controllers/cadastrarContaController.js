@@ -1,4 +1,5 @@
 const ContaCorrente = require('../models/contaCorrenteModel');
+const escolherContaController = require('./escolherContaController');
 
 function cadastrarContaView(req, res) {
   res.render("cadastrarConta/cadastrarConta.html", {});
@@ -33,9 +34,9 @@ async function cadastrarConta(req, res) {
       usuario_id: usuarioId,
     });
 
-    console.log('Conta corrente cadastrada:', contaCorrente);
     const mensagem = 'Conta corrente cadastrada com sucesso.';
-    res.render('escolherConta/escolherConta.html', { mensagem });
+    escolherContaController.escolherContaView(req, res);
+    // res.render('escolherConta/escolherConta.html', { mensagem });
   } catch (error) {
     console.error('Erro ao cadastrar conta corrente:', error);
     const erro = 'Ocorreu um erro ao cadastrar a conta.';
