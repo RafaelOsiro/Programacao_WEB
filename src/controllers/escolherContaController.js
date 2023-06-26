@@ -23,6 +23,15 @@ async function escolherContaView(req, res) {
   }
 }
 
+function escolherContaEntrar(req, res) {
+  // Obtenha os dados da conta selecionada pelo usuário
+  const contaId = req.body['escolher-conta'];
+
+  // Faça o redirecionamento para a página "home/home.html" com o ID da conta como parâmetro
+  res.redirect(`/home?contaId=${contaId}`);
+}
+
 module.exports = {
-  escolherContaView
+  escolherContaView,
+  escolherContaEntrar
 };
