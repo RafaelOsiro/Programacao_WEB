@@ -6,5 +6,6 @@ const escolherContaController = require('../controllers/escolherContaController'
 
 router.get('/escolher/conta', sessao.autenticar(), escolherContaController.escolherContaView);
 router.post('/escolher/conta/selecionar', sessao.autenticar(), escolherContaController.escolherContaEntrar);
+router.get('/logout', escolherContaController.logout);
 
 module.exports = router;

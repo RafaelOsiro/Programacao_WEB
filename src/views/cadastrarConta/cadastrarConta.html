@@ -18,6 +18,12 @@
       }
       return true;
     }
+
+    function confirmarSaida() {
+      if (confirm('Tem certeza de que deseja sair?')) {
+        window.location.href = '/logout';
+      }
+    }
   </script>
 </head>
 
@@ -33,7 +39,7 @@
           <a href="/escolher/conta" class="btn text-primary">Voltar</a>
         </div>
         <div class="collapse navbar-collapse justify-content-md-end" id="navbarSupportedContent">
-          <button type="button" class="btn btn-danger">Sair</button>
+          <button type="button" class="btn btn-danger" onclick="confirmarSaida()">Sair</button>
         </div>
       </div>
     </nav>

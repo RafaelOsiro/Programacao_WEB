@@ -24,14 +24,21 @@ async function escolherContaView(req, res) {
 }
 
 function escolherContaEntrar(req, res) {
-  // Obtenha os dados da conta selecionada pelo usuário
   const contaId = req.body['escolher-conta'];
-
-  // Faça o redirecionamento para a página "home/home.html" com o ID da conta como parâmetro
   res.redirect(`/home?contaId=${contaId}`);
+}
+
+function logout(req, res) {
+  req.session.destroy((err) => {
+    if (err) {
+      console.error('Erro ao destruir a sessão:', err);
+    }
+    res.redirect('/login');
+  });
 }
 
 module.exports = {
   escolherContaView,
-  escolherContaEntrar
+  escolherContaEntrar,
+  logout
 };

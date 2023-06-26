@@ -1,7 +1,6 @@
 const ContaCorrente = require('../models/contaCorrenteModel');
 const url = require('url');
 
-
 async function homeView(req, res) {
   let pessoaNome = req.session.pessoa.nome;
 
@@ -11,24 +10,26 @@ async function homeView(req, res) {
   const contaCorrente = await ContaCorrente.findOne({
     where: { id: contaId },
   });
-  console.log(contaCorrente);
 
   let contaCorrenteNome = '';
 
   if (contaCorrente) {
     contaCorrenteNome = contaCorrente.nome;
-    console.log(contaCorrente.nome);
-
   }
-
-  console.log(contaCorrenteNome);
-
 
   res.render("home/home.html", { pessoa: pessoaNome, conta: contaCorrenteNome });
 }
 
-
+function logout(req, res) {
+  req.session.destroy((err) => {
+    if (err) {
+      console.error('Erro ao destruir a sessão:', err);
+    }
+    res.redirect('/login');
+  });
+}
 
 module.exports = {
-  homeView
+  homeView,
+  logout
 };

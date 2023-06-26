@@ -1,4 +1,5 @@
 module.exports = {
+
   autenticar() {
     return (req, res, next) => {
       if (req.session && req.session.autenticado) {
@@ -9,6 +10,7 @@ module.exports = {
       }
     };
   },
+
   criarSessao() {
     const session = require('express-session')
 

@@ -6,5 +6,6 @@ const cadastrarContaController = require('../controllers/cadastrarContaControlle
 
 router.get('/cadastrar/conta', sessao.autenticar(), cadastrarContaController.cadastrarContaView);
 router.post('/cadastrar/conta', cadastrarContaController.cadastrarConta);
+router.get('/logout', cadastrarContaController.logout);
 
 module.exports = router;

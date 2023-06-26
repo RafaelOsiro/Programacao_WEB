@@ -8,6 +8,13 @@
   <link rel="stylesheet" href="/css/styles.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function confirmarSaida() {
+      if (confirm('Tem certeza de que deseja sair?')) {
+        window.location.href = '/logout';
+      }
+    }
+  </script>
 </head>
 
 <body>
@@ -22,7 +29,7 @@
           <a href="/home" class="btn text-primary">Voltar</a>
         </div>
         <div class="collapse navbar-collapse justify-content-md-end" id="navbarSupportedContent">
-          <button type="button" class="btn btn-danger">Sair</button>
+          <button type="button" class="btn btn-danger" onclick="confirmarSaida()">Sair</button>
         </div>
       </div>
     </nav>
