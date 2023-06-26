@@ -56,7 +56,13 @@ async function cadastrarConta(req, res) {
 
 function escolherContaEntrar(req, res) {
   const contaId = req.body['escolher-conta'];
-  res.redirect(`/home?contaId=${contaId}`);
+
+  if (contaId) {
+    res.redirect(`/home?contaId=${contaId}`);
+  } else {
+    const erro = 'Nenhuma conta selecionada.';
+    res.render('escolherConta/escolherConta.html', { erro });
+  }
 }
 
 function logout(req, res) {
