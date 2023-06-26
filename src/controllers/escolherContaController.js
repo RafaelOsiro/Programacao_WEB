@@ -58,7 +58,7 @@ function escolherContaEntrar(req, res) {
   const contaId = req.body['escolher-conta'];
 
   if (contaId) {
-    res.redirect(`/home?contaId=${contaId}`);
+    res.redirect(`/home/${contaId}`);
   } else {
     const erro = 'Nenhuma conta selecionada.';
     res.render('escolherConta/escolherConta.html', { erro });

@@ -3,24 +3,27 @@ const saldoController = require('../controllers/saldoController');
 const url = require('url');
 
 async function homeView(req, res) {
-  let pessoaNome = req.session.pessoa.nome;
+  try {
+    const pessoaNome = req.session.pessoa.nome;
+    const contaId = req.params.contaId;
 
-  const urlObj = url.parse(req.url, true);
-  const contaId = urlObj.query.contaId;
+    const contaCorrente = await ContaCorrente.findOne({
+      where: { id: contaId },
+    });
 
-  const contaCorrente = await ContaCorrente.findOne({
-    where: { id: contaId },
-  });
+    let contaCorrenteNome = '';
 
-  let contaCorrenteNome = '';
+    if (contaCorrente) {
+      contaCorrenteNome = contaCorrente.nome;
+    }
 
-  if (contaCorrente) {
-    contaCorrenteNome = contaCorrente.nome;
+    res.render("home/home.html", { pessoa: pessoaNome, conta: contaCorrenteNome, id_saldo: contaId, id_hist: contaId, contaId: contaId });
+  } catch (error) {
+    console.error('Erro ao exibir a página home:', error);
+    const mensagem = 'Ocorreu um erro ao exibir a página home.';
+    res.render("home/home.html", { mensagem });
   }
-
-  res.render("home/home.html", { pessoa: pessoaNome, conta: contaCorrenteNome, id_saldo: contaId, id_hist: contaId, contaId: contaId });
 }
-
 
 async function consultarSaldo(req, res) {
   const contaId = req.query.contaId;

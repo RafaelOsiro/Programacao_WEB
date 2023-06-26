@@ -2,7 +2,7 @@ const ContaCorrente = require('../models/contaCorrenteModel');
 const url = require('url');
 
 async function saldoView(req, res) {
-  const contaId = req.query.contaId;
+  const contaId = req.params.id;
 
   console.log("CONTA " + contaId);
 
@@ -18,7 +18,7 @@ async function saldoView(req, res) {
 
   const saldoFormatado = saldoContaCorrente.toFixed(2).replace(".", ",");
 
-  res.render("saldo/saldo.html", { saldo: saldoFormatado });
+  res.render("saldo/saldo.html", { saldo: saldoFormatado, contaId: contaId });
 }
 
 function logout(req, res) {
