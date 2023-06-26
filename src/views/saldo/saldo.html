@@ -35,6 +35,13 @@
     </nav>
   </div>
 
+  {{#erro}}
+  <div class="alert alert-danger alert-dismissible errorAlert">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>{{erro}}</strong>
+  </div>
+  {{/erro}}
+
   <div class="container-fluid d-flex align-items-center justify-content-center extratoContainer">
     <div class="row ">
 
@@ -42,7 +49,7 @@
 
       <div class="container-fluid d-flex align-items-center justify-content-center ">
         <div class="row rowMarginHome">
-          <span class="extratoText">R$ 1000,00</span>
+          <span class="extratoText">R$ {{saldo}}</span>
         </div>
       </div>
 

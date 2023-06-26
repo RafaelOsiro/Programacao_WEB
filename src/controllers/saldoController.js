@@ -1,5 +1,24 @@
-function saldoView(req, res) {
-  res.render("saldo/saldo.html", {});
+const ContaCorrente = require('../models/contaCorrenteModel');
+const url = require('url');
+
+async function saldoView(req, res) {
+  const contaId = req.query.contaId;
+
+  console.log("CONTA " + contaId);
+
+  const contaCorrente = await ContaCorrente.findOne({
+    where: { id: contaId },
+  });
+
+  let saldoContaCorrente = '';
+
+  if (contaCorrente) {
+    saldoContaCorrente = contaCorrente.saldo;
+  }
+
+  const saldoFormatado = saldoContaCorrente.toFixed(2).replace(".", ",");
+
+  res.render("saldo/saldo.html", { saldo: saldoFormatado });
 }
 
 function logout(req, res) {

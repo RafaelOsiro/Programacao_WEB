@@ -47,8 +47,9 @@
             <div class="containerContent">
               <h2 class="text-primary">Consultas</h2>
               <div class="col">
-                <a href="/saldo" class="btn btn-primary">Saldo</a>
-                <a href="/extrato" class="btn btn-primary">Extrato</a>
+                <!-- <a href="/saldo/{{id_saldo}}" class="btn btn-primary">Saldo</a> -->
+                <a href="/saldo?contaId={{contaId}}" class="btn btn-primary">Saldo</a>
+                <a href="/extrato?contaId={{contaId}}" class="btn btn-primary">Extrato</a>
               </div>
             </div>
           </div>
@@ -56,7 +57,7 @@
           <div class="operationsContainer">
             <div class="containerContent">
               <h2 class="text-primary">Transferências</h2>
-              <a href="/transferencia/entre-contas" class="btn btn-primary">Entre conta corrente</a>
+              <a href="/transferencia?contaId=<%= contaId %" class="btn btn-primary">Entre conta corrente</a>
             </div>
           </div>
 
