@@ -1,9 +1,30 @@
-const Pessoa = require('../models/pessoaModel');
+const ContaCorrente = require('../models/contaCorrenteModel');
+const url = require('url');
 
-function homeView(req, res) {
-  let pessoa = req.session.pessoa.nome;
 
-  res.render("home/home.html", { pessoa });
+async function homeView(req, res) {
+  let pessoaNome = req.session.pessoa.nome;
+
+  const urlObj = url.parse(req.url, true);
+  const contaId = urlObj.query.contaId;
+
+  const contaCorrente = await ContaCorrente.findOne({
+    where: { id: contaId },
+  });
+  console.log(contaCorrente);
+
+  let contaCorrenteNome = '';
+
+  if (contaCorrente) {
+    contaCorrenteNome = contaCorrente.nome;
+    console.log(contaCorrente.nome);
+
+  }
+
+  console.log(contaCorrenteNome);
+
+
+  res.render("home/home.html", { pessoa: pessoaNome, conta: contaCorrenteNome });
 }
 
 

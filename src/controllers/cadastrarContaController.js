@@ -22,6 +22,7 @@ async function cadastrarConta(req, res) {
   const { nome } = req.body;
   const dataAbertura = new Date().toLocaleDateString('pt-BR');
   const numeroContaCorrente = await pegarUltimoNumeroContaConrrete();
+  const usuarioId = req.session.usuario.id;
 
   try {
     const contaCorrente = await ContaCorrente.create({
@@ -29,7 +30,7 @@ async function cadastrarConta(req, res) {
       numero: numeroContaCorrente,
       data_abertura: dataAbertura,
       saldo: 0,
-      usuario_id: 1,
+      usuario_id: usuarioId,
     });
 
     console.log('Conta corrente cadastrada:', contaCorrente);
