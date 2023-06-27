@@ -1,4 +1,5 @@
 const ContaCorrente = require('../models/contaCorrenteModel');
+const Movimento = require('../models/movimentoModel');
 
 function transferenciaEntreContasView(req, res) {
   res.render("transferencia/transferenciaEntreContas.html", { contaId: req.params.contaId });
@@ -47,6 +48,16 @@ async function processarTransferencia(req, res) {
 
   const novoSaldoDestino = contaDestinoExiste.saldo + valorDeposito;
   await contaDestinoExiste.update({ saldo: novoSaldoDestino });
+
+  const movimento = await Movimento.create({
+    conta_corrente_id: contaOrigem.id,
+    tipo: 'D',
+    data_movimento: new Date(),
+    valor: valorDeposito,
+    conta_corrente_origem: contaOrigem.numero,
+    conta_corrente_destino: contaDestinoExiste.numero,
+    observacao: 'Transferência entre Contas'
+  });
 
   const mensagem = "Transferência realizada com sucesso!";
   res.render('home/home.html', { mensagem: mensagem, contaId: contaId });

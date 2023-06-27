@@ -23,11 +23,18 @@
         alert('Por favor, digite o número da conta corrente.');
         return false;
       }
-      if (isNaN(valor) || valor <= 0) {
+
+      var valorTranferencia = formatarValor(valor);
+
+      if (isNaN(valorTranferencia) || valorTranferencia <= 0) {
         alert('O valor do depósito deve ser maior que zero.');
         return false;
       }
-      var valorTranferencia = formatarValor(valor);
+
+      if (valor.indexOf('-') !== -1) {
+        alert('O valor da transferência não pode ser negativo.');
+        return false;
+      }
 
       document.getElementById('valor').value = valorTranferencia.toFixed(2);
       return true;
@@ -35,8 +42,9 @@
 
     function formatarValor(valor) {
       valor = valor.replace(/[^0-9.,]/g, '');
-      valor = valor.replace(',', '.');
+      valor = valor.replace(',', '@');
       valor = valor.replace(/\.(?=.*\.)/g, '');
+      valor = valor.replace('@', '.');
       var partes = valor.split('.');
       if (partes.length > 1) {
         valor = partes[0] + '.' + partes[1].substring(0, 2);
