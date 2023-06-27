@@ -15,6 +15,34 @@
         window.location.href = '/logout';
       }
     }
+    function validarTransferencia() {
+      var contaCorrente = document.getElementById('contaCorrente').value.trim();
+      var valor = document.getElementById('valor').value;
+
+      if (contaCorrente === '') {
+        alert('Por favor, digite o número da conta corrente.');
+        return false;
+      }
+      if (isNaN(valor) || valor <= 0) {
+        alert('O valor do depósito deve ser maior que zero.');
+        return false;
+      }
+      var valorTranferencia = formatarValor(valor);
+
+      document.getElementById('valor').value = valorTranferencia.toFixed(2);
+      return true;
+    }
+
+    function formatarValor(valor) {
+      valor = valor.replace(/[^0-9.,]/g, '');
+      valor = valor.replace(',', '.');
+      valor = valor.replace(/\.(?=.*\.)/g, '');
+      var partes = valor.split('.');
+      if (partes.length > 1) {
+        valor = partes[0] + '.' + partes[1].substring(0, 2);
+      }
+      return parseFloat(valor);
+    }
   </script>
 </head>
 
@@ -27,7 +55,7 @@
           <img src="/images/Logo.png" class="logoImage" />
         </a>
         <div>
-          <a href="/home" class="btn text-primary">Voltar</a>
+          <a href="/home/{{contaId}}" class="btn text-primary">Voltar</a>
         </div>
         <div class="collapse navbar-collapse justify-content-md-end" id="navbarSupportedContent">
           <button type="button" class="btn btn-danger" onclick="confirmarSaida()">Sair</button>
@@ -36,26 +64,19 @@
     </nav>
   </div>
 
-  <!-- {{#pessoa}}
-  <div class="alert alert-success alert-dismissible sucessAlert">
-    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    <strong>{{pessoa.result}}</strong>
-  </div>
-  {{/pessoa}}
-
   {{#erro}}
   <div class="alert alert-danger alert-dismissible errorAlert">
     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     <strong>{{erro}}</strong>
   </div>
-  {{/erro}} -->
+  {{/erro}}
 
   <div class="container-fluid d-flex align-items-center justify-content-center transferirContainer">
     <div class="row">
 
       <h1 class="depositarTitle">Transferencia entre<br /> Conta Corrente</h1>
 
-      <form method="post" action="/submit">
+      <form method="post" action="/transferencia/submit/{{contaId}}" onsubmit="return validarTransferencia()">
         <fieldset>
 
           <div class="col-auto mb-3">

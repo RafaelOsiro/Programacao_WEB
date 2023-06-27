@@ -17,7 +17,7 @@ async function homeView(req, res) {
       contaCorrenteNome = contaCorrente.nome;
     }
 
-    res.render("home/home.html", { pessoa: pessoaNome, conta: contaCorrenteNome, id_saldo: contaId, id_hist: contaId, contaId: contaId });
+    res.render("home/home.html", { pessoa: pessoaNome, conta: contaCorrenteNome, contaId: contaId });
   } catch (error) {
     console.error('Erro ao exibir a página home:', error);
     const mensagem = 'Ocorreu um erro ao exibir a página home.';

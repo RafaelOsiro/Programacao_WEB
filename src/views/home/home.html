@@ -35,6 +35,13 @@
     </nav>
   </div>
 
+  {{#mensagem}}
+  <div class="alert alert-success alert-dismissible sucessAlert">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>{{mensagem}}</strong>
+  </div>
+  {{/mensagem}}
+
   <div class="container-fluid d-flex align-items-center justify-content-center homeContainer">
     <div class="row ">
 
@@ -47,7 +54,6 @@
             <div class="containerContent">
               <h2 class="text-primary">Consultas</h2>
               <div class="col">
-                <!-- <a href="/saldo/{{id_saldo}}" class="btn btn-primary">Saldo</a> -->
                 <a href="/saldo/{{contaId}}" class="btn btn-primary">Saldo</a>
                 <a href="/extrato?contaId={{contaId}}" class="btn btn-primary">Extrato</a>
               </div>
@@ -57,7 +63,7 @@
           <div class="operationsContainer">
             <div class="containerContent">
               <h2 class="text-primary">Transferências</h2>
-              <a href="/transferencia?contaId=<%= contaId %" class="btn btn-primary">Entre conta corrente</a>
+              <a href="/transferencia/entre-contas/{{contaId}}" class="btn btn-primary">Transferência</a>
             </div>
           </div>
 

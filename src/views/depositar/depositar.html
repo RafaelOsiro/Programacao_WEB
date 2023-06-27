@@ -12,15 +12,15 @@
     function validarDeposito() {
       var contaCorrente = document.getElementById('contaCorrente').value.trim();
       var valor = document.getElementById('valor').value;
-      var valorDeposito = formatarValor(valor);
       if (contaCorrente === '') {
         alert('Por favor, digite o número da conta corrente.');
         return false;
       }
-      if (isNaN(valorDeposito) || valorDeposito <= 0) {
+      if (isNaN(valor) || valor <= 0) {
         alert('O valor do depósito deve ser maior que zero.');
         return false;
       }
+      var valorDeposito = formatarValor(valor);
       document.getElementById('valor').value = valorDeposito.toFixed(2);
       return true;
     }
