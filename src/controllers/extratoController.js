@@ -1,5 +1,5 @@
 function extratoView(req, res) {
-  res.render("extrato/extrato.html", {});
+  res.render("extrato/extrato.html", { contaId: req.params.contaId });
 }
 
 
