@@ -12,7 +12,7 @@ async function processarTransferencia(req, res) {
 
   if (contaDestino === contaId) {
     const erro = "Você não pode transferir para sua própria conta.";
-    res.render("transferencia/transferenciaEntreContas.html", { erro });
+    res.render("transferencia/transferenciaEntreContas.html", { erro, contaId: contaId });
     return;
   }
 
@@ -21,7 +21,7 @@ async function processarTransferencia(req, res) {
   });
   if (!contaDestinoExiste) {
     const erro = "A conta de destino não existe.";
-    res.render("transferencia/transferenciaEntreContas.html", { erro });
+    res.render("transferencia/transferenciaEntreContas.html", { erro, contaId: contaId });
     return;
   }
 
@@ -29,7 +29,7 @@ async function processarTransferencia(req, res) {
 
   if (isNaN(valorDeposito) || valorDeposito <= 0) {
     const erro = "O valor da transferência não pode ser negativo.";
-    res.render("transferencia/transferenciaEntreContas.html", { erro });
+    res.render("transferencia/transferenciaEntreContas.html", { erro, contaId: contaId });
     return;
   }
 
@@ -39,7 +39,7 @@ async function processarTransferencia(req, res) {
 
   if (!contaOrigem || contaOrigem.saldo < valorDeposito) {
     const erro = "A conta de origem não possui saldo suficiente.";
-    res.render("transferencia/transferenciaEntreContas.html", { erro });
+    res.render("transferencia/transferenciaEntreContas.html", { erro, contaId: contaId });
     return;
   }
 
@@ -47,12 +47,24 @@ async function processarTransferencia(req, res) {
   await contaOrigem.update({ saldo: novoSaldoOrigem });
 
   const novoSaldoDestino = contaDestinoExiste.saldo + valorDeposito;
-  await contaDestinoExiste.update({ saldo: novoSaldoDestino });
+  await contaDestinoExiste.update({ saldo: novoSaldoDestino, contaId: contaId });
 
-  const movimento = await Movimento.create({
+  const date = new Date();
+
+  const movimentoOrigem = await Movimento.create({
     conta_corrente_id: contaOrigem.id,
     tipo: 'D',
-    data_movimento: new Date(),
+    data_movimento: date,
+    valor: valorDeposito,
+    conta_corrente_origem: contaOrigem.numero,
+    conta_corrente_destino: contaDestinoExiste.numero,
+    observacao: 'Transferência entre Contas'
+  });
+
+  const movimentoDestino = await Movimento.create({
+    conta_corrente_id: contaDestino.id,
+    tipo: 'C',
+    data_movimento: date,
     valor: valorDeposito,
     conta_corrente_origem: contaOrigem.numero,
     conta_corrente_destino: contaDestinoExiste.numero,

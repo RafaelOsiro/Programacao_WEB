@@ -1,4 +1,5 @@
 const ContaCorrente = require('../models/contaCorrenteModel');
+const Movimento = require('../models/movimentoModel');
 
 function depositarView(req, res) {
   res.render("depositar/depositar.html", {});
@@ -20,6 +21,14 @@ async function realizarDeposito(req, res) {
 
     const novoSaldo = contaExistente.saldo + valorDeposito;
     await contaExistente.update({ saldo: novoSaldo });
+
+    const movimento = await Movimento.create({
+      conta_corrente_id: contaExistente.id,
+      tipo: 'C',
+      data_movimento: new Date(),
+      valor: valorDeposito,
+      observacao: 'Depósito em caixa eletrônico'
+    });
 
     const mensagem = `O valor ${valorDeposito} foi depositado na conta: ${contaExistente.numero} com sucesso.`;
 
