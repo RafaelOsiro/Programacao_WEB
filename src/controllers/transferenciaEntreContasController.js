@@ -24,7 +24,9 @@ async function processarTransferencia(req, res) {
     return;
   }
 
-  if (valor < 0) {
+  const valorDeposito = parseFloat(valor);
+
+  if (isNaN(valorDeposito) || valorDeposito <= 0) {
     const erro = "O valor da transferência não pode ser negativo.";
     res.render("transferencia/transferenciaEntreContas.html", { erro });
     return;
@@ -34,17 +36,17 @@ async function processarTransferencia(req, res) {
     where: { id: contaId },
   });
 
-  if (!contaOrigem || contaOrigem.saldo < valor) {
+  if (!contaOrigem || contaOrigem.saldo < valorDeposito) {
     const erro = "A conta de origem não possui saldo suficiente.";
     res.render("transferencia/transferenciaEntreContas.html", { erro });
     return;
   }
 
-  contaOrigem.saldo -= valor;
-  await contaOrigem.save();
+  const novoSaldoOrigem = contaOrigem.saldo - valorDeposito;
+  await contaOrigem.update({ saldo: novoSaldoOrigem });
 
-  contaDestinoExiste.saldo += valor;
-  await contaDestinoExiste.save();
+  const novoSaldoDestino = contaDestinoExiste.saldo + valorDeposito;
+  await contaDestinoExiste.update({ saldo: novoSaldoDestino });
 
   const mensagem = "Transferência realizada com sucesso!";
   res.render('home/home.html', { mensagem: mensagem, contaId: contaId });
