@@ -14,9 +14,16 @@
         window.location.href = '/logout';
       }
     }
-
     function validarPesquisa() {
+      const dataInicial = new Date(document.getElementById('data_inicial').value);
+      const dataFinal = new Date(document.getElementById('data_final').value);
 
+      if (dataInicial > dataFinal) {
+        alert('A data inicial não pode ser maior que a data final.');
+        return false;
+      }
+
+      return true;
     }
   </script>
 </head>
@@ -39,13 +46,27 @@
     </nav>
   </div>
 
+  {{#mensagem}}
+  <div class="alert alert-success alert-dismissible sucessAlert">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>{{mensagem}}</strong>
+  </div>
+  {{/mensagem}}
+
+  {{#erro}}
+  <div class="alert alert-danger alert-dismissible errorAlert">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    <strong>{{erro}}</strong>
+  </div>
+  {{/erro}}
+
   <div class="container-fluid d-flex align-items-center justify-content-center extratoContainer">
     <div class="row ">
 
       <h1 class="depositarTitle">Consulta - Extrato</h1>
 
       <div class="row">
-        <form method="post" action="/extrato/{{contaId}}" onsubmit="return validarPesquisa()">
+        <form method="post" action="/extrato/consultar/{{contaId}}" onsubmit="return validarPesquisa()">
           <fieldset>
 
             <div class="row">
