@@ -62,7 +62,7 @@ async function processarTransferencia(req, res) {
   });
 
   const movimentoDestino = await Movimento.create({
-    conta_corrente_id: contaDestino.id,
+    conta_corrente_id: contaDestinoExiste.id,
     tipo: 'C',
     data_movimento: date,
     valor: valorDeposito,
