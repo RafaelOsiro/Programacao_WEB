@@ -8,5 +8,6 @@ const homeController = require('../controllers/homeController');
 router.get('/extrato/:contaId', sessao.autenticar(), extratoController.extratoView);
 router.get('/home/:contaId', sessao.autenticar(), homeController.homeView);
 router.get('/logout', extratoController.logout);
+router.post('/extrato/:contaId', sessao.autenticar(), extratoController.consultarExtrato);
 
 module.exports = router;

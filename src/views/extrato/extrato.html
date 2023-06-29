@@ -45,7 +45,7 @@
       <h1 class="depositarTitle">Consulta - Extrato</h1>
 
       <div class="row">
-        <form method="post" action="/transferencia/submit/{{contaId}}" onsubmit="return validarPesquisa()">
+        <form method="post" action="/extrato/{{contaId}}" onsubmit="return validarPesquisa()">
           <fieldset>
 
             <div class="row">
@@ -55,8 +55,8 @@
               </div>
 
               <div class="col mb-3 pt-3">
-                <label for="data_inicial" class="form-label">Data Final:</label>
-                <input type="date" id="data_inicial" name="data_inicial" class="form-control" />
+                <label for="data_final" class="form-label">Data Final:</label>
+                <input type="date" id="data_final" name="data_final" class="form-control" />
               </div>
 
             </div>
@@ -83,15 +83,14 @@
             </thead>
 
             <tbody>
-              {{#movimento}}
+              {{#movimentos}}
               <tr>
-                <td><a href="/pessoa/editar/{{id}}">{{nome}}</a></td>
                 <td>{{data}}</td>
                 <td>{{tipo}}</td>
                 <td>{{operacao}}</td>
                 <td>{{valor}}</td>
               </tr>
-              {{/movimento}}
+              {{/movimentos}}
             </tbody>
           </table>
         </div>
