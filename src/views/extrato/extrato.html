@@ -14,6 +14,10 @@
         window.location.href = '/logout';
       }
     }
+
+    function validarPesquisa() {
+
+    }
   </script>
 </head>
 
@@ -40,9 +44,56 @@
 
       <h1 class="depositarTitle">Consulta - Extrato</h1>
 
-      <div class="container-fluid d-flex align-items-center justify-content-center ">
-        <div class="row rowMarginHome">
-          <span class="extratoText">R$ 1000,00</span>
+      <div class="row">
+        <form method="post" action="/transferencia/submit/{{contaId}}" onsubmit="return validarPesquisa()">
+          <fieldset>
+
+            <div class="row">
+              <div class="col mb-3 pt-3">
+                <label for="data_inicial" class="form-label">Data Inicial:</label>
+                <input type="date" id="data_inicial" name="data_inicial" class="form-control" />
+              </div>
+
+              <div class="col mb-3 pt-3">
+                <label for="data_inicial" class="form-label">Data Final:</label>
+                <input type="date" id="data_inicial" name="data_inicial" class="form-control" />
+              </div>
+
+            </div>
+
+            <div class="container-expand-fluid d-flex justify-content-between pt-2">
+              <input type="reset" class="btn btn-secondary" value="Limpar" />
+              <input type="submit" class="btn btn-primary" value="Pesquisar" />
+            </div>
+
+          </fieldset>
+        </form>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-12">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Data</th>
+                <th>Tipo</th>
+                <th>Operação</th>
+                <th>Valor</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {{#movimento}}
+              <tr>
+                <td><a href="/pessoa/editar/{{id}}">{{nome}}</a></td>
+                <td>{{data}}</td>
+                <td>{{tipo}}</td>
+                <td>{{operacao}}</td>
+                <td>{{valor}}</td>
+              </tr>
+              {{/movimento}}
+            </tbody>
+          </table>
         </div>
       </div>
 
