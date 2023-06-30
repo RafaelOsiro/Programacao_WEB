@@ -1,3 +1,10 @@
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .navigationBar {
   background: #E7F1FF;
 }
@@ -14,8 +21,7 @@
 }
 
 .rowMargin {
-  padding: 70px 0;
-  row-gap: 105px;
+  row-gap: 50px;
 }
 
 .operationsContainer {
@@ -40,13 +46,12 @@
   margin: 97px 0;
 }
 
-.depositarContainer {
-  margin: 97.5px 0;
+.cadastrarPessoaContainer {
+  padding: 50px 0;
 }
 
 .depositarTitle {
   text-align: center;
-  margin: 88px 0;
 }
 
 .depositarEspacamento {
@@ -103,4 +108,9 @@
 
 .transferirContainer {
   margin: 97.2px 0;
+}
+
+.cadastrarContaTitle {
+  text-align: center;
+  margin-bottom: 30px;
 }
