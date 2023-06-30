@@ -18,7 +18,7 @@ async function escolherContaView(req, res) {
     let opcoes = '';
 
     if (contasCorrentes.length > 0) {
-      opcoes = contasCorrentes.map(conta => `<option value="${conta.id}">${conta.nome}</option>`).join('');
+      opcoes = contasCorrentes.map(conta => `<option value="${conta.id}">Nome da conta: ${conta.nome} - Número da Conta: ${conta.id}</option>`).join('');
     }
 
     res.render('escolherConta/escolherConta.html', { pessoa: pessoaNome, options: opcoes });
