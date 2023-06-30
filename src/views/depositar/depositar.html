@@ -24,6 +24,11 @@
         return false;
       }
 
+      if (valorDeposito > 5000) {
+        alert('O valor do depósito não pode ultrapassar a quantia de R$ 5.000,00.');
+        return false;
+      }
+
       if (valor.indexOf('-') !== -1) {
         alert('O valor da transferência não pode ser negativo.');
         return false;

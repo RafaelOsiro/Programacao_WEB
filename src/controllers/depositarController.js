@@ -1,5 +1,6 @@
 const ContaCorrente = require('../models/contaCorrenteModel');
 const Movimento = require('../models/movimentoModel');
+const TextoUtil = require('../util/texto');
 
 function depositarView(req, res) {
   res.render("depositar/depositar.html", {});
@@ -19,6 +20,10 @@ async function realizarDeposito(req, res) {
       throw new Error('O valor do depósito deve ser maior que zero.');
     }
 
+    if (valorDeposito > 5000) {
+      throw new Error('O valor do depósito não pode ultrapassar a quantia de R$ 5.000,00.');
+    }
+
     const novoSaldo = contaExistente.saldo + valorDeposito;
     await contaExistente.update({ saldo: novoSaldo });
 
@@ -30,7 +35,9 @@ async function realizarDeposito(req, res) {
       observacao: 'Depósito em caixa eletrônico'
     });
 
-    const mensagem = `O valor ${valorDeposito} foi depositado na conta: ${contaExistente.numero} com sucesso.`;
+    const valorFormatado = TextoUtil.formatarValor(valorDeposito);
+
+    const mensagem = `O valor ${valorFormatado} foi depositado na conta: ${contaExistente.numero} com sucesso.`;
 
     res.render('index/index.html', { mensagem });
   } catch (error) {
